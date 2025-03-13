@@ -1,0 +1,75 @@
+﻿@page "/stranka"
+
+<PageTitle>Stránka</PageTitle>
+
+<h1>Správa produktů</h1>
+
+<div>
+    <h3>Produkt 1</h3>
+    <label>Název produktu: <input type="text" @bind="produkt1.Nazev"/></label>
+    <br />
+    <label>Cena bez DPH: <input type="number" @bind="produkt1.Cena"/></label>
+    <br />
+    <label>DPH: <input type="number" @bind="produkt1.DPH"/></label>
+    <br />
+    <label>Množství na skladě: <input type="number" @bind="produkt1.MnozstviNaSklade"/> ks</label>
+</div>
+<hr />
+<div>
+    <p>Název: @produkt1.Nazev</p>
+    
+    <p>Cena bez DPH: @produkt1.RozsahCena()</p>
+    
+    <p>Cena s DPH: @produkt1.CenaSDPH Kč</p>
+    
+    <p>DPH: @produkt1.DPH %</p>
+    
+    <p>Množství na skladě: @produkt1.RozsahSkladu()</p>
+    
+    <p>Cena s DPH na skladě: @produkt1.CenaSDPHNaSklade Kč</p>
+    <br />
+</div>
+<div class="alert alert-danger">
+    
+</div>
+<hr />
+<div>
+    <h3>Produkt 2</h3>
+    <label>Název produktu: <input type="text" @bind="produkt2.Nazev" /></label>
+    <br />
+    <label>Cena bez DPH: <input type="number" @bind="produkt2.Cena" /></label>
+    <br />
+    <label>DPH: <input type="number" @bind="produkt2.DPH" /></label>
+    <br />
+    <label>Množství na skladě: <input type="number" @bind="produkt2.MnozstviNaSklade" /> ks</label>
+</div>
+<hr />
+<div>
+    <p>Název: @produkt2.Nazev</p>
+    
+    <p>Cena bez DPH: @produkt2.RozsahCena()</p>
+    
+    <p>Cena s DPH: @produkt2.CenaSDPH Kč</p>
+   
+    <p>DPH: @produkt2.DPH %</p>
+    
+    <p>Množství na skladě: @produkt2.RozsahSkladu()</p>
+   
+    <p>Cena s DPH na skladě: @produkt2.CenaSDPHNaSklade Kč</p>
+    
+</div>
+<div class="alert alert-danger">
+    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+</div>
+
+<div>
+    <h3>Porovnání produktů</h3>
+    <p>Porovnání celkové hodnoty an skladě bez DPH: @Models.ProduktSklad.PorovnaniBezDPH(produkt1, produkt2)</p>
+    <p>Porovnání celkové hodnoty an skladě s DPH: @Models.ProduktSklad.PorovnaniSDPH(produkt1, produkt2)</p>
+    <p>Podíl produktu 1 na celkové skladové hodnotě s DPH: @Models.ProduktSklad.Podil(produkt1, produkt2)</p>
+</div>
+
+@code {
+    Models.ProduktSklad produkt1 = new Models.ProduktSklad();
+    Models.ProduktSklad produkt2 = new Models.ProduktSklad();
+}
